@@ -1,0 +1,4 @@
+.messageErreur{
+    display: flex;
+    flex-direction: column;
+}

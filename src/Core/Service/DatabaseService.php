@@ -15,6 +15,7 @@ class DatabaseService
     public static function getConnect(): PDO
     {
         if (!self::$dbConnect) {
+
             try {
                 self::$dbConnect = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';port=' . $_ENV["DB_SOCKET"] . ';dbname=' . $_ENV["DB_NAME"],
                     $_ENV["DB_USER"],

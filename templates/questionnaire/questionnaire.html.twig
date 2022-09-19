@@ -3,7 +3,8 @@
 {% block title %}{{ questionnaire.getLibelleQuestionnaire }}{% endblock %}
 
 {% block content %}
-    <h1>Questionnaire : {{ questionnaire.getLibelleQuestionnaire }}</h1>
+
+    <h1>Questionnaire : {{  questionnaire.getLibelleQuestionnaire }}</h1>
     {{ questionnaire.getLibelleQuestionnaire }} ({{ questionnaire.getIdQuestionnaire }})<br>
     <a href="/lister">Retour</a>
 {% endblock %}

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 10 jan. 2018 à 23:06
--- Version du serveur :  10.1.25-MariaDB
--- Version de PHP :  7.1.7
+-- Généré le : lun. 19 sep. 2022 à 22:01
+-- Version du serveur : 10.4.22-MariaDB
+-- Version de PHP : 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `bddqcm`
+-- Base de données : `qcm2`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `etudiants` (
   `idEtudiant` int(11) NOT NULL,
   `login` varchar(15) NOT NULL,
-  `motDePasse` smallint(15) NOT NULL,
+  `motDePasse` varchar(50) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL
@@ -42,9 +41,19 @@ CREATE TABLE `etudiants` (
 --
 
 INSERT INTO `etudiants` (`idEtudiant`, `login`, `motDePasse`, `nom`, `prenom`, `email`) VALUES
-(1, 'ben', 1234, 'Alison', 'Benjamin', 'alison.benjamin@hotmail.fr'),
-(5, 'tof', 1234, 'Gand', 'Christophe', 'gand.christophe@free.fr'),
-(6, 'lulu', 1234, 'Gand', 'Lucile', 'gand.lucile@bbox.fr');
+(1, 'ludovic', '1234', 'mak', 'ludovic', 'ludovic'),
+(5, 'ludovic', 'ludovic', 'toto', 'ludovic', 'ludovic'),
+(6, 'lulu', '1234', 'toto', 'Lucile', 'gand.lucile@bbox.fr'),
+(7, 'ludovic', '1234', 'momo', 'tla', 'ludovictest'),
+(10, 'test1', '0', 'salu', 'test1', 'test1'),
+(48, 'ludovic', 'ludovic', 'ludovic', 'ludovic', 'ludovic'),
+(49, 'ludovic', 'ludovic', 'ludovic', 'ludovic', 'ludovic'),
+(73, 'ludovic', 'ludovic', 'ludovic', 'ludovic', 'ludovic'),
+(85, 'dzdzdz', '', 'dhdzudz', 'dzdzhudzdz', 'dzdzdz'),
+(86, 'dzdzdz', '', 'dhdzudz', 'dzdzhudzdz', 'dzdzdz'),
+(87, 'dzdzdz', '', 'dhdzudz', 'dzdzhudzdz', 'dzdzdz'),
+(88, 'dzdzdzd', 'zeert', 'ludovic', 'dzdzdz', 'ludovic@gmail.com'),
+(94, 'ludovic', '782dd27ea8e3b4f4095ffa38eeb4d20b59069077', 'ludovic', 'ludovic', 'ludovic@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -316,17 +325,20 @@ ALTER TABLE `reponse`
 -- AUTO_INCREMENT pour la table `etudiants`
 --
 ALTER TABLE `etudiants`
-  MODIFY `idEtudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idEtudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+
 --
 -- AUTO_INCREMENT pour la table `question`
 --
 ALTER TABLE `question`
   MODIFY `idQuestion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT pour la table `reponse`
 --
 ALTER TABLE `reponse`
   MODIFY `idReponse` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
 --
 -- Contraintes pour les tables déchargées
 --

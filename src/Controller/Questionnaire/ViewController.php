@@ -23,6 +23,7 @@ class ViewController implements ControllerInterface
         $questionnaireModel = new QuestionnaireModel();
 
         // je teste la variable GET /?id
+
         if (isset($this->id)) {
             return TwigCore::getEnvironment()->render(
                 'questionnaire/questionnaire.html.twig',

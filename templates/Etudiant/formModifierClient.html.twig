@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <form method="POST">
+        <div class="infoNom">
+            <input type="text" name="nom" placeholder= "Votre nom..." requiered="requiered" >
+        </div>
+        <div class="infoPrenom">
+            <input type="text" name="prenom" placeholder= "Votre prenom..." requiered="requiered" >
+        </div>
+        <div class="infoEmail">
+            <input type="text" name="email"placeholder= "Votre adresse mail..." requiered="requiered">
+        </div>
+        <div class="infoLogin">
+            <input type="text" name="login" placeholder= "Votre login..." requiered="requiered">
+        </div>
+        <div class="infoMdp">
+            <input type="password" name="mdp"placeholder="Entrez votre mot de passe..." >
+        </div>
+
+        <div class="messageErreur">
+            {% for lesMessages in erreur %}
+                <span>{{ lesMessages }}</span>
+            {% endfor %}
+        </div>
+        <input type="submit" name="valid_inscription" onclick="verifierValeur()">
+    </form>
+    <a href="/etudiant"> Retour</a>
+
+{% endblock %}
