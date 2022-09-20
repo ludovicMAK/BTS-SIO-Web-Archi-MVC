@@ -98,7 +98,7 @@ class formulaireController implements ControllerInterface
                     if ($value->getLogin() == $this->login){
                         $memeLogin = true;
                         array_push($mesMessagesErreur,"Cette login existe déja");
-                        
+
                     }
                 }
 
