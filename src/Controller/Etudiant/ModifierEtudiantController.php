@@ -61,7 +61,11 @@ class ModifierEtudiantController implements ControllerInterface
 
     public function outputEvent()
     {
+        $unEtudiant = new etudiantModel();
+        $infoEtudiant = $unEtudiant->recupererUnEtudiantSelonUnID($this->id);
         $lstElementModifier = array();
+        $lstEtudiant = $unEtudiant->selectionnerToutLesEtudiantSaufEtudiantChoisi($this->id);
+
         $mesMessagesErreur =[];
         if ($this->exist){
 
@@ -80,6 +84,28 @@ class ModifierEtudiantController implements ControllerInterface
             if ($this->email != null){
                 $lstElementModifier['email'] = $lstUnElement=['email',$this->email];
             }
+            $memeEmail = false;
+            $memeLogin = false;
+            foreach ($lstEtudiant as $value){
+                if ($value->getEmail == $this->email){
+                    $memeEmail = true;
+                }
+                if ($value->getLogin == $this->login){
+                    $memeLogin = true;
+                }
+
+            }
+            if ($memeLogin = true){
+                array_push($mesMessagesErreur,"Login déjà existant");
+            }
+            $verifEmail=true;
+            $sanitized_email = filter_var($this->email, FILTER_SANITIZE_EMAIL);
+            if(!filter_var($sanitized_email, FILTER_VALIDATE_EMAIL)){
+                array_push($mesMessagesErreur,"Veuillez saisir un bon format d' email SVP");
+                $verifEmail =false;
+            }else if ($memeEmail = true){
+                array_push($mesMessagesErreur,"Email déjà existant");
+            }
             $data ="";
             foreach ($lstElementModifier as $value){
                 if ($value === end($lstElementModifier)){
@@ -89,21 +115,39 @@ class ModifierEtudiantController implements ControllerInterface
                     $data .= $value[0]." = '".$value[1]."' , ";
                 }
             }
-            $unEtudiant = new etudiantModel();
-            $unEtudiant->updateEtudiant($data,$this->id);
-            array_push($mesMessagesErreur,"L'étudiant a été bien modifier");
-            return TwigCore::getEnvironment()->render(
-                'Etudiant/tblEtudiant.html.twig',
-                [
-                    "tblEtudiant"=>$unEtudiant->obtenirLesEtudiant()
-                ]);
+            if ($memeEmail == false && $memeEmail ==false && $verifEmail == true){
+                $unEtudiant->updateEtudiant($data,$this->id);
+                array_push($mesMessagesErreur,"L'étudiant a été bien modifier");
+            }
+            if (count($mesMessagesErreur) != 0){
+                return TwigCore::getEnvironment()->render(
+                    'Etudiant/formModifierEtudiant.html.twig',
+                    [
+                        "login"=>$infoEtudiant->getLogin(),
+                        "email"=>$infoEtudiant->getEmail(),
+                        "prenom"=>$infoEtudiant->getPrenom(),
+                        "nom"=>$infoEtudiant->getNom(),
+                        "erreur"=>$mesMessagesErreur
+                    ]);
+            }
+            else{
+                return TwigCore::getEnvironment()->render(
+                    'Etudiant/tblEtudiant.html.twig',
+                    [
+                        "tblEtudiant"=>$unEtudiant->obtenirLesEtudiant()
+                    ]);
+            }
+
         }
 
 
         return TwigCore::getEnvironment()->render(
-            'Etudiant/formModifierClient.html.twig',
+            'Etudiant/formModifierEtudiant.html.twig',
             [
-
+                "login"=>$infoEtudiant->getLogin(),
+                "email"=>$infoEtudiant->getEmail(),
+                "prenom"=>$infoEtudiant->getPrenom(),
+                "nom"=>$infoEtudiant->getNom(),
             ]);
     }
 }

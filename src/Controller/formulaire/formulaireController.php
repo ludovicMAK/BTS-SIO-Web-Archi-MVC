@@ -63,6 +63,8 @@ class formulaireController implements ControllerInterface
             $mesMessagesErreur =[];
 
             if ($this->exist){
+                $etudiant = new etudiantModel();
+                $lstEtudiant = $etudiant->obtenirLesEtudiant();
 
                 if ( $this->nom == null){
                     array_push($mesMessagesErreur,"Veuillez saisir un nom SVP");
@@ -84,14 +86,32 @@ class formulaireController implements ControllerInterface
                     array_push($mesMessagesErreur,"Le mot de passe n' est pas identique");
                     $memeMDP = false;
                 }
+                $memeEmail= false;
+                $memeLogin = false;
+                foreach ($lstEtudiant as $value){
+
+                   if ($value->getEmail() == $this->email){
+                       $memeEmail = true;
+                       array_push($mesMessagesErreur,"Ce mail existe déja");
+
+                   }
+                    if ($value->getLogin() == $this->login){
+                        $memeLogin = true;
+                        array_push($mesMessagesErreur,"Cette login existe déja");
+                        
+                    }
+                }
+
+
                 $verifEmail=true;
                 $sanitized_email = filter_var($this->email, FILTER_SANITIZE_EMAIL);
                 if(!filter_var($sanitized_email, FILTER_VALIDATE_EMAIL)){
                     array_push($mesMessagesErreur,"Veuillez saisir un bon format d' email SVP");
                     $verifEmail =false;
                 }
-                if ($this->email !=null && $this->login !=null && $this->mdp != null && $this->nom !=null && $this->prenom !=null && $memeMDP == true && $verifEmail == true){
-                    $etudiant = new etudiantModel();
+
+                if ($this->email !=null && $this->login !=null && $this->mdp != null && $this->nom !=null && $this->prenom !=null && $memeMDP == true && $verifEmail == true && $memeLogin ==false && $memeEmail ==false){
+
                     $etudiant->creerNouveauxEtudiant($this->login,sha1($this->mdp),$this->nom,$this->prenom,$this->email);
                     array_push($mesMessagesErreur,"Votre êtes bien inscript");
                 }

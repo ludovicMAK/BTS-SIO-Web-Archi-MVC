@@ -41,4 +41,32 @@ class etudiantModel
         $requete = $this->bdd->prepare("UPDATE `etudiants` SET ".$data." WHERE `etudiants`.`idEtudiant` = ".$unid);
         $requete->execute();
     }
+    public  function recupererUnEtudiantSelonUnID(int $unId){
+        $requete = $this->bdd->prepare('SELECT * FROM `etudiants` WHERE etudiants.idEtudiant =' . $unId);
+        $requete->execute();
+        $result = $requete->fetch();
+        $etudiant = new Etudiant();
+        $etudiant->setLogin($result["login"]);
+        $etudiant->setEmail($result["email"]);
+        $etudiant->setPrenom($result["prenom"]);
+        $etudiant->setNom($result["nom"]);
+        return $etudiant;
+
+    }
+    public function selectionnerToutLesEtudiantSaufEtudiantChoisi(int $unId){
+        $requete = $this->bdd->prepare("SELECT * FROM `etudiants` WHERE etudiants.idEtudiant != ".$unId);
+        $requete->execute();
+
+        $tabEtudiant = [];
+        foreach ($requete->fetchAll() as $value){
+            $unEtudiant = new Etudiant();
+            $unEtudiant->setNom($value["nom"]);
+            $unEtudiant->setPrenom($value["prenom"]);
+            $unEtudiant->setEmail($value["email"]);
+            $unEtudiant->setLogin($value["login"]);
+            $unEtudiant->setIdEtudiant($value["idEtudiant"]);
+            $tabEtudiant[] = $unEtudiant;
+        }
+        return $tabEtudiant;
+    }
 }
