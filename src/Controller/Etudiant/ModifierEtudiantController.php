@@ -75,7 +75,7 @@ class ModifierEtudiantController implements ControllerInterface
                 $lstElementModifier['prenom'] = $lstUnElement=['prenom',$this->prenom];
             }
             if ($this->mdp != null){
-                $lstElementModifier['mdp'] = $lstUnElement=['motDePasse',$this->mdp];
+                $lstElementModifier['mdp'] = $lstUnElement=['motDePasse',sha1($this->mdp)];
             }
             if ($this->login != null){
                 $lstElementModifier['login'] = $lstUnElement=['login',$this->login];
@@ -118,7 +118,7 @@ class ModifierEtudiantController implements ControllerInterface
                 $unEtudiant->updateEtudiant($data,$this->id);
 
             }
-            
+
             if (count($mesMessagesErreur) != 0){
                 return TwigCore::getEnvironment()->render(
                     'Etudiant/formModifierEtudiant.html.twig',

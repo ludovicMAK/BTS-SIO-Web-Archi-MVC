@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 19 sep. 2022 à 22:01
+-- Généré le : mar. 20 sep. 2022 à 21:58
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -41,19 +41,12 @@ CREATE TABLE `etudiants` (
 --
 
 INSERT INTO `etudiants` (`idEtudiant`, `login`, `motDePasse`, `nom`, `prenom`, `email`) VALUES
-(1, 'ludovic', '1234', 'mak', 'ludovic', 'ludovic'),
-(5, 'ludovic', 'ludovic', 'toto', 'ludovic', 'ludovic'),
-(6, 'lulu', '1234', 'toto', 'Lucile', 'gand.lucile@bbox.fr'),
-(7, 'ludovic', '1234', 'momo', 'tla', 'ludovictest'),
-(10, 'test1', '0', 'salu', 'test1', 'test1'),
-(48, 'ludovic', 'ludovic', 'ludovic', 'ludovic', 'ludovic'),
-(49, 'ludovic', 'ludovic', 'ludovic', 'ludovic', 'ludovic'),
-(73, 'ludovic', 'ludovic', 'ludovic', 'ludovic', 'ludovic'),
-(85, 'dzdzdz', '', 'dhdzudz', 'dzdzhudzdz', 'dzdzdz'),
-(86, 'dzdzdz', '', 'dhdzudz', 'dzdzhudzdz', 'dzdzdz'),
-(87, 'dzdzdz', '', 'dhdzudz', 'dzdzhudzdz', 'dzdzdz'),
-(88, 'dzdzdzd', 'zeert', 'ludovic', 'dzdzdz', 'ludovic@gmail.com'),
-(94, 'ludovic', '782dd27ea8e3b4f4095ffa38eeb4d20b59069077', 'ludovic', 'ludovic', 'ludovic@gmail.com');
+(1, 'lzdkz', '1234', 'ludovic', 'dzdzdz', 'lud@93mail.com'),
+(5, 'dzkdz', 'ludovic', 'tt', 'ludovic', 'dzdjzdz@mail.com'),
+(6, 'lulu', '1234', 'toto', 'ludovic', 'gand.lucile@bbox.fr'),
+(10, 'test4', '0', 'salu', 'test1', 'test1@gmail.com'),
+(95, 'malik', '2a30b5bdc3f31b44f61058b96e9994e1e4f7fbfe', 'ludovic', 'ludovic', 'ludo@gmail.com'),
+(98, 'mak', 'ae5b05ab3cd47f4a88d7b0da49eb96fd034406d0', 'ludovic', 'mak', 'hudzdzdz@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -325,7 +318,7 @@ ALTER TABLE `reponse`
 -- AUTO_INCREMENT pour la table `etudiants`
 --
 ALTER TABLE `etudiants`
-  MODIFY `idEtudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `idEtudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT pour la table `question`
