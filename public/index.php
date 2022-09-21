@@ -15,7 +15,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $rout
     $route->addRoute('GET', '/lister', 'Quizz\Controller\Questionnaire\ListController');
     $route->addRoute('GET', '/detail/{id:\d+}', 'Quizz\Controller\Questionnaire\ViewController');
     $route->addRoute('GET','/HelloWord','Quizz\Controller\HelloWorldController');
-    $route->addRoute('GET','/dynamique/{titre:\w+}','Quizz\Controller\Dynamique\DynamiqueController');
+    $route->addRoute('GET','/dynamique /{titre:\w+}','Quizz\Controller\Dynamique\DynamiqueController');
     $route->addRoute(['GET', 'POST'],'/etudiant/formulaire','Quizz\Controller\formulaire\formulaireController');
     $route->addRoute(['GET', 'POST'],'/etudiant', 'Quizz\Controller\Etudiant\AffichageEtudiantController');
     $route->addRoute(['GET', 'POST'],'/etudiant/delete/{id:\w+}', 'Quizz\Controller\Etudiant\SupprimerEtudiantController');

@@ -114,7 +114,7 @@ class ModifierEtudiantController implements ControllerInterface
                     $data .= $value[0]." = '".$value[1]."' , ";
                 }
             }
-            if ($memeEmail == false && $memeEmail ==false && $verifEmail == true){
+            if ($memeEmail == false && $memeLogin ==false && $verifEmail == true){
                 $unEtudiant->updateEtudiant($data,$this->id);
 
             }
